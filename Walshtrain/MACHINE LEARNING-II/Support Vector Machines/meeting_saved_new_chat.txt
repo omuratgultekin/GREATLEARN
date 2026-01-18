@@ -1,0 +1,100 @@
+2026-01-11 12:20:22 From michael Kimotho to Everyone:
+	thats ok
+	
+2026-01-11 12:39:06 From Dessie Ramnath . to Everyone:
+	all good
+	
+2026-01-11 13:04:36 From Faculty (Olympus) to Everyone:
+	Scaling is performed before train–test split.
+	
+2026-01-11 13:13:28 From Faculty (Olympus) to Everyone:
+	Model Utility
+	We have been able to build a predictive model that can be used by the government to find the citizens having less than 50K salary with an f1_score of 0.9 on the training set and formulate policies accordingly.
+	Explanation
+	High F1-score ensures:
+	balanced identification,
+	reduced misallocation of benefits,
+	minimized opportunity loss.
+	
+	2) Model Robustness
+	All the SVM models have given a generalized performance on the training and test sets, and there is very little difference between their performances.
+	Explanation
+	Indicates:
+	reliable preprocessing,
+	stable feature representation,
+	absence of severe overfitting.
+	
+	3) Education-Focused Policy
+	The government should promote education among citizens...
+	Explanation
+	Directly supported by:
+	salary vs education analysis,
+	strong separation in income across education levels.
+	This is evidence-backed, not speculative.
+	
+2026-01-11 13:13:36 From Faculty (Olympus) to Everyone:
+	4) Working Hours & Labor Policy
+	Working hours is one of the significant predictors of salary...
+	Explanation
+	Supported by:
+	bivariate analysis,
+	wider working-hour spread for higher-income groups.
+	Aligns with:
+	fair pay,
+	work–life balance objectives.
+	
+	5) Private Sector & Pay Equity
+	Reforms should be made for private-sector employees...
+	Policy formulated by the government should be considerate of equal pay...
+	Explanation
+	Directly grounded in:
+	salary vs workclass,
+	salary vs sex analysis.
+	These recommendations are descriptive-policy aligned, not causal claims.
+	
+2026-01-11 13:16:32 From Faculty (Olympus) to Everyone:
+	SVM is a supervised learning algorithm used for classification and regression.
+	It works by finding a decision boundary (hyperplane) that separates classes with the maximum margin.
+	The data points closest to the boundary are called support vectors.
+	Only support vectors influence the model; other points do not affect the boundary.
+	SVM focuses on generalization, not just fitting training data.
+	It is effective in high-dimensional spaces and works well with limited data.
+	SVM is robust to overfitting, especially when the margin is large.
+	
+2026-01-11 13:17:08 From Faculty (Olympus) to Everyone:
+	Linear Kernel
+	Used when data is linearly separable
+	Simple, fast, and interpretable
+	Polynomial Kernel
+	Captures feature interactions
+	Higher degree → more complex decision boundary
+	Risk of overfitting if degree is too high
+	RBF (Gaussian) Kernel
+	Handles non-linear data well
+	Flexible but sensitive to hyperparameters
+	
+2026-01-11 13:17:45 From Faculty (Olympus) to Everyone:
+	C (Regularization parameter)
+	Controls trade-off between margin size and misclassification
+	High C → low bias, high variance
+	Low C → high bias, low variance
+	Gamma
+	Controls influence of individual data points
+	High gamma → complex boundary (risk of overfitting)
+	Low gamma → smoother boundary
+	
+2026-01-11 13:18:31 From Faculty (Olympus) to Everyone:
+	Support Vector Machine is a margin-based classifier that uses support vectors and kernel functions to create optimal decision boundaries, focusing on generalization rather than fitting all data points.
+	
+2026-01-11 13:22:03 From Dessie Ramnath . to Everyone:
+	all good
+	
+2026-01-11 13:22:25 From Dessie Ramnath . to Everyone:
+	thanks
+	
+2026-01-11 13:22:29 From Benediktus Biran Andrianto . to Everyone:
+	thanks all, and happy new year
+	
+2026-01-11 13:22:46 From michael Kimotho to Everyone:
+	thanks for great presentation
+	

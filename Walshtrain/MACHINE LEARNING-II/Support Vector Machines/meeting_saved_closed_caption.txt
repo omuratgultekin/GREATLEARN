@@ -1,0 +1,1416 @@
+[Faculty (Olympus)] 12:38:35
+Okay, so I hope everyone is back. I'm gonna give…
+
+[Faculty (Olympus)] 12:38:39
+few seconds so that the learners could join back, and then we are going to start our session.
+
+[Faculty (Olympus)] 12:38:44
+with the focus on our case study today.
+
+[Faculty (Olympus)] 12:38:50
+But in the meantime, if anybody has any questions or any comments, or any doubts,
+
+[Faculty (Olympus)] 12:38:55
+Regarding the content covered so far, please do let me know.
+
+[Faculty (Olympus)] 12:40:07
+key. So, since nobody has any questions…
+
+[Faculty (Olympus)] 12:40:12
+We are going to start the focus of…
+
+[Faculty (Olympus)] 12:40:15
+The case study, that is…
+
+[Faculty (Olympus)] 12:40:18
+Let's try to understand the problem statement first.
+
+[Faculty (Olympus)] 12:40:22
+So now, this is an NGO that works with the government on matters of social policy to bring about a change in the life of underprivileged sections of society.
+
+[Faculty (Olympus)] 12:40:33
+Now, they are basically given a task of coming up with a policy framework using a dataset,
+
+[Faculty (Olympus)] 12:40:40
+information provided from World Health Organization.
+
+[Faculty (Olympus)] 12:40:45
+Now, as a data scientist,
+
+[Faculty (Olympus)] 12:40:48
+Your task is, basically,
+
+[Faculty (Olympus)] 12:40:52
+To identify and influence the income of an individual and build a prediction that can help the government formulate policies for the right
+
+[Faculty (Olympus)] 12:41:01
+society, uh, right pocket of the society and share a proposal.
+
+[Faculty (Olympus)] 12:41:07
+Now, whenever you start any of these…
+
+[Faculty (Olympus)] 12:41:12
+case studies, the most important thing is to understand the attributes or the
+
+[Faculty (Olympus)] 12:41:19
+Data which is given to us, and I'll give you…
+
+[Faculty (Olympus)] 12:41:22
+Guys, 30 seconds to review it.
+
+[Faculty (Olympus)] 12:41:46
+Okay, I hope everybody has done that, and now we'll see how each of this data, the age, the work class, and all the other things, play an important feature.
+
+[Faculty (Olympus)] 12:41:58
+We start with installing the important libraries for us.
+
+[Faculty (Olympus)] 12:42:02
+Uh, we basically import them.
+
+[Faculty (Olympus)] 12:42:05
+And this is just the important part. Once we have actually loaded our data,
+
+[Faculty (Olympus)] 12:42:14
+we basically do a DF.head, basically. We are gonna see the first few rows.
+
+[Faculty (Olympus)] 12:42:21
+off. Uh, the first 5 rows, uh, and the last 5 rows of our dataset.
+
+[Faculty (Olympus)] 12:42:27
+Now, this is the second most important thing that you guys need to
+
+[Faculty (Olympus)] 12:42:32
+take a look in detail.
+
+[Faculty (Olympus)] 12:42:35
+And understand how the data is…
+
+[Faculty (Olympus)] 12:42:40
+Now, based on that, I can see the targets, uh, label salary is already expected in the two-class format.
+
+[Faculty (Olympus)] 12:42:49
+Categical variables appear lowercase in some fields.
+
+[Faculty (Olympus)] 12:42:54
+And we have mixed formatting too, so…
+
+[Faculty (Olympus)] 12:42:58
+uh, like…
+
+[Faculty (Olympus)] 12:42:59
+Marital status.
+
+[Faculty (Olympus)] 12:43:06
+married, never married.
+
+[Faculty (Olympus)] 12:43:10
+Uh…
+
+[Faculty (Olympus)] 12:43:10
+And, uh, not married.
+
+[Faculty (Olympus)] 12:43:16
+Excuse me.
+
+[Faculty (Olympus)] 12:43:20
+So, we have this, and we have categorical variables in some fields, like native continent, where…
+
+[Faculty (Olympus)] 12:43:29
+Uh, marital status.
+
+[Faculty (Olympus)] 12:43:32
+Now, similarly, we do a data.tail, which shows us the last 5 rows,
+
+[Faculty (Olympus)] 12:43:40
+And this, basically, you are done, so that we can check that the files are read correctly, column names are expected, and target column exist.
+
+[Faculty (Olympus)] 12:43:51
+Now, after moving on to this…
+
+[Faculty (Olympus)] 12:43:55
+we would do, uh, df.shape…
+
+[Faculty (Olympus)] 12:43:58
+Basically…
+
+[Faculty (Olympus)] 12:44:03
+To check the number of exact columns and rows we have.
+
+[Faculty (Olympus)] 12:44:07
+Now, once start is done, we do check the structure of the data.
+
+[Faculty (Olympus)] 12:44:14
+So, does this data.info basically displays the column names, number of null values, data types, memory usage,
+
+[Faculty (Olympus)] 12:44:21
+So, now these answers…
+
+[Faculty (Olympus)] 12:44:24
+critical question, are there missing values? How many are numerical? How many are particle? What is the target variable categorical type? Um…
+
+[Faculty (Olympus)] 12:44:33
+So we have 6 numericals and 8 categorical values, and total we have 32,531 values.
+
+[Faculty (Olympus)] 12:44:43
+No. This problem is a classification task, so we will be relying on support with the classification.
+
+[Faculty (Olympus)] 12:44:51
+Now we do a duplicate.
+
+[Faculty (Olympus)] 12:44:56
+Uh… to check…
+
+[Faculty (Olympus)] 12:44:58
+If there were any duplicates, and there were none, so that is good, and we do a DA…
+
+[Faculty (Olympus)] 12:45:04
+dot is null.sum, which basically checks our missing values, and there were no missing values, so that is also good.
+
+[Faculty (Olympus)] 12:45:11
+And then we have the statistical summary of our data.
+
+[Faculty (Olympus)] 12:45:17
+So, once we see that…
+
+[Faculty (Olympus)] 12:45:21
+we basically understand the average age of people in the data set is around 38, and it ranges a wide…
+
+[Faculty (Olympus)] 12:45:30
+from 17 to 90?
+
+[Faculty (Olympus)] 12:45:32
+Education is also something to average number of years of education is around 10 years, but there is also a large difference.
+
+[Faculty (Olympus)] 12:45:39
+between the minimum value, that's the 25th percentile, and
+
+[Faculty (Olympus)] 12:45:44
+It indicates that there might be outliers. Similarly, capital gain
+
+[Faculty (Olympus)] 12:45:50
+Huge difference between the 75th percentile, uh, and the maximum value.
+
+[Faculty (Olympus)] 12:45:55
+indicating presence of outliers. Similarly, with capital loss, a huge difference between the 75th and the maximum value.
+
+[Faculty (Olympus)] 12:46:05
+Working hours per week is most common 40 hours.
+
+[Faculty (Olympus)] 12:46:09
+But a vast difference in minimum value in the 25th percentile.
+
+[Faculty (Olympus)] 12:46:15
+As well as 75th percentile and maximum value.
+
+[Faculty (Olympus)] 12:46:20
+No. We have identified different factors and influence of an ink model to help the…
+
+[Faculty (Olympus)] 12:46:26
+policies. Now, we'll explore, uh, do the EDA.
+
+[Faculty (Olympus)] 12:46:32
+Any questions till now?
+
+[Faculty (Olympus)] 12:46:41
+Okay…
+
+[Faculty (Olympus)] 12:46:45
+So…
+
+[Faculty (Olympus)] 12:46:47
+During the first, we basically, uh…
+
+[Faculty (Olympus)] 12:46:50
+use her code to draw various graphs, and let's directly move to our graphs.
+
+[Faculty (Olympus)] 12:46:56
+The first is the university graph.
+
+[Faculty (Olympus)] 12:46:59
+Um…
+
+[Faculty (Olympus)] 12:47:02
+Let me try to please…
+
+[Faculty (Olympus)] 12:47:06
+Um, yeah, now you can see, now this is our box plot.
+
+[Faculty (Olympus)] 12:47:10
+And in this box plot, what you'll be basically seeing
+
+[Faculty (Olympus)] 12:47:15
+is…
+
+[Faculty (Olympus)] 12:47:19
+Dad?
+
+[Faculty (Olympus)] 12:47:27
+We have… most of the data is around 40 working hours.
+
+[Faculty (Olympus)] 12:47:33
+No.
+
+[Faculty (Olympus)] 12:47:37
+This gives you a sense that most of the observation data might be of salaried employees working for 8 hours, 5 days a week. Some of the observations could be outliers.
+
+[Faculty (Olympus)] 12:47:48
+And these outliers represent the part-time, the overtime, the extreme work schedules some might be having.
+
+[Faculty (Olympus)] 12:47:55
+Similarly, we'll go through the…
+
+[Faculty (Olympus)] 12:47:59
+bar plot.
+
+[Faculty (Olympus)] 12:48:04
+And see how the work classes.
+
+[Faculty (Olympus)] 12:48:06
+So, 70% of the work class comes from the private sector.
+
+[Faculty (Olympus)] 12:48:12
+Which indicates there is a class imbalance, and it also suggests private sector dominates the dataset, and smaller work class may have weaker statistical power
+
+[Faculty (Olympus)] 12:48:26
+No, you move on to native con… uh… continent.
+
+[Faculty (Olympus)] 12:48:31
+Which basically shows us…
+
+[Faculty (Olympus)] 12:48:33
+that 94% of the people are native to the America, followed by 2.1 Asians.
+
+[Faculty (Olympus)] 12:48:40
+Which gives us a strong geographic skew, and have limited discriminatory power, but still contribute marginally
+
+[Faculty (Olympus)] 12:48:47
+When combined with others, now…
+
+[Faculty (Olympus)] 12:48:50
+salary.
+
+[Faculty (Olympus)] 12:48:53
+Now, this is an interesting, uh, one, and by do I see that this is an interesting one?
+
+[Faculty (Olympus)] 12:49:01
+is because…
+
+[Faculty (Olympus)] 12:49:10
+24% of the observations have a salary of above 50K and 76% have a salary below 50K.
+
+[Faculty (Olympus)] 12:49:16
+which conforms our class imbalance. So, metric, uh, we basically justify the import of position recall in F1.
+
+[Faculty (Olympus)] 12:49:26
+And we would have to have a confusion matrix.
+
+[Faculty (Olympus)] 12:49:31
+Now, we'll be moving to our bivariate analysis by doing a correlation matrix.
+
+[Faculty (Olympus)] 12:49:37
+And when you pay close attention, you won't see any high correlating factors, to be honest.
+
+[Faculty (Olympus)] 12:49:45
+But… still…
+
+[Faculty (Olympus)] 12:49:46
+All correlations are weak, numerical features are largely independent of each other, there is no risk of multicollinearity.
+
+[Faculty (Olympus)] 12:49:55
+And now, we compare another graph
+
+[Faculty (Olympus)] 12:49:58
+Between Saudi versus sex.
+
+[Faculty (Olympus)] 12:50:01
+Now, with this graph…
+
+[Faculty (Olympus)] 12:50:03
+But we can understand is,
+
+[Faculty (Olympus)] 12:50:06
+About 30% of the males have salary more than 15K, and only 10% of the females have salary more than 15K. 50K.
+
+[Faculty (Olympus)] 12:50:15
+So, it shows that there is a gap in society, and government should investigate further on how to formulate better policies. But there could also be that
+
+[Faculty (Olympus)] 12:50:26
+the proportion of the meal in the workforce is large, and it's not about…
+
+[Faculty (Olympus)] 12:50:31
+the females not having disparity, but the presence of female itself is less.
+
+[Faculty (Olympus)] 12:50:40
+So that could also be an factor. Now, once this is done, we do a salary versus education.
+
+[Faculty (Olympus)] 12:50:47
+Which basically shows us this…
+
+[Faculty (Olympus)] 12:50:54
+Now, 70% of the people are doctors graduate from professional school programs, have a salary of 50K, which
+
+[Faculty (Olympus)] 12:51:01
+makes a positive relation because education and salary generally are bound to be tied up. The more, uh, uh…
+
+[Faculty (Olympus)] 12:51:09
+Uh, the higher the educated you are, the more salary you'll be getting.
+
+[Faculty (Olympus)] 12:51:14
+Now, salary versus occupation.
+
+[Faculty (Olympus)] 12:51:19
+So, 50% of the people whose occupation is of executive manager, professor, speciality habit, the salary above $50,000, and people with privates are, like,
+
+[Faculty (Olympus)] 12:51:31
+handlers, cleaners, farmer, fishing, having the likelihood of less than 50K.
+
+[Faculty (Olympus)] 12:51:38
+Which is something that we'll be expecting now, salary versus work class.
+
+[Faculty (Olympus)] 12:51:46
+So, in this stack graph,
+
+[Faculty (Olympus)] 12:51:51
+But you will see that 50% of the self-employed have salary above 15K, and followed by 40% of the federal income employee who has salary more than 50K.
+
+[Faculty (Olympus)] 12:52:01
+So, 20% of the people working in private sector earn more than 50K.
+
+[Faculty (Olympus)] 12:52:06
+Now, salary versus age.
+
+[Faculty (Olympus)] 12:52:20
+So, let me try to book here, but… okay.
+
+[Faculty (Olympus)] 12:52:24
+Now, you can see the entire graph, and when you see this graph,
+
+[Faculty (Olympus)] 12:52:29
+Basically, people who are more than 50K are generally older than having an average age of 48, whereas people having less than 50K salary have an average age of around 36.
+
+[Faculty (Olympus)] 12:52:53
+Now, after this, we have salary plus working hours per week.
+
+[Faculty (Olympus)] 12:52:57
+Now, let's see this graph.
+
+[Faculty (Olympus)] 12:53:01
+Now, you can see majority of the people…
+
+[Faculty (Olympus)] 12:53:04
+Having about 50K salary, work around 40 hours. Those having above 50K salary have a higher range of working hours as compared to the ones with less than 15K.
+
+[Faculty (Olympus)] 12:53:14
+But there are outliers present.
+
+[Faculty (Olympus)] 12:53:19
+No.
+
+[Faculty (Olympus)] 12:53:23
+After this…
+
+[Faculty (Olympus)] 12:53:25
+We do our working hours plus work class.
+
+[Faculty (Olympus)] 12:53:38
+So if you saw this, you will basically understand that the private sector employees work for more hours to get salary above 50K.
+
+[Faculty (Olympus)] 12:53:47
+This last variability in working hours of self-employed, which makes sense, as they might be working at their ease.
+
+[Faculty (Olympus)] 12:53:54
+Alright. The next thing…
+
+[Faculty (Olympus)] 12:53:57
+that we need to do is…
+
+[Faculty (Olympus)] 12:54:01
+drop the capital gain and capital loss.
+
+[Faculty (Olympus)] 12:54:09
+As most of the observations are zero in that case.
+
+[Faculty (Olympus)] 12:54:12
+And hence, we are dropping that.
+
+[Faculty (Olympus)] 12:54:18
+reset…
+
+[Faculty (Olympus)] 12:54:20
+So, we'll be dropping those.
+
+[Faculty (Olympus)] 12:54:24
+columns, one second…
+
+[Faculty (Olympus)] 12:54:29
+Since most of them are zero, we are dropping that.
+
+[Faculty (Olympus)] 12:54:33
+column, and doing an outlier detection.
+
+[Faculty (Olympus)] 12:54:43
+So, if you see this, you basically see age and inf… L weight have upper outliers, education number of years has lower outliers, and working hours has both upper and lower.
+
+[Faculty (Olympus)] 12:54:55
+outliers.
+
+[Faculty (Olympus)] 12:54:58
+Now, we treat the outliers basically by computing
+
+[Faculty (Olympus)] 12:55:05
+Here, the Q1, Q3, and interquartile range, lower and upper viscous.
+
+[Faculty (Olympus)] 12:55:10
+Low values are set to lower whisker, and higher values to upper whiskers.
+
+[Faculty (Olympus)] 12:55:14
+And then we treat, uh, this to all the outlier functions.
+
+[Faculty (Olympus)] 12:55:19
+After this, we do a validation and move towards the data preparation model.
+
+[Faculty (Olympus)] 12:55:27
+Uh, this validation shows that now there are no outliers, and we are preparing for modeling.
+
+[Faculty (Olympus)] 12:55:34
+Now, before we move to modeling, any questions, anything, uh, anyone want to add?
+
+[Faculty (Olympus)] 12:55:48
+Okay. So, we basically prepared the model, we convert our…
+
+[Faculty (Olympus)] 12:55:55
+By Nitty numeric tables, and basically encode the target variable.
+
+[Faculty (Olympus)] 12:56:01
+One is for the people who are underprivileged, the less than 50K and 0 is for more than 50K.
+
+[Faculty (Olympus)] 12:56:08
+Now, we separate the features and the target variable.
+
+[Faculty (Olympus)] 12:56:11
+And then we scale numeric variables using scaling.
+
+[Faculty (Olympus)] 12:56:19
+Now, we are basically doing a min-max scaling.
+
+[Dessie Ramnath .] 12:56:24
+Sorry, Yamanjo, can ask something before you go on?
+
+[Faculty (Olympus)] 12:56:27
+Sure, uh, Desi, uh, you are a little, uh, low, like, can you, uh…
+
+[Dessie Ramnath .] 12:56:29
+Yeah.
+
+[Dessie Ramnath .] 12:56:33
+Yeah, sure. Can you hear me?
+
+[Faculty (Olympus)] 12:56:34
+Yeah, much better.
+
+[Dessie Ramnath .] 12:56:36
+Sorry, I just moved the mic to my face.
+
+[Dessie Ramnath .] 12:56:38
+Um, the question around what keeps on bothering me is when you find a dataset is unbalanced.
+
+[Dessie Ramnath .] 12:56:45
+like you mentioned right at the top, um…
+
+[Dessie Ramnath .] 12:56:48
+what was it, more than so many percent is…
+
+[Dessie Ramnath .] 12:56:50
+In the private sector and the…
+
+[Dessie Ramnath .] 12:56:53
+And we… I mean, my concern is…
+
+[Dessie Ramnath .] 12:56:56
+When I'm looking at other data sets or in the future, how will I know
+
+[Dessie Ramnath .] 12:57:02
+to ignore this, and to just continue what you're doing like you're doing now? Uh…
+
+[Dessie Ramnath .] 12:57:06
+And when will I do something about…
+
+[Dessie Ramnath .] 12:57:09
+imbalances, you know, like, things of dummies and etc, etc.
+
+[Dessie Ramnath .] 12:57:12
+When will I… I mean, why is it in this case, although it's imbalance to be continuing to do analysis?
+
+[Faculty (Olympus)] 12:57:21
+Okay, so let me try to rephrase your question.
+
+[Faculty (Olympus)] 12:57:26
+Basically, what you are trying to suggest is,
+
+[Faculty (Olympus)] 12:57:29
+we see that, uh, there is a definite imbalance in the data source.
+
+[Dessie Ramnath .] 12:57:34
+Yeah. Yeah.
+
+[Faculty (Olympus)] 12:57:35
+Now,
+
+[Faculty (Olympus)] 12:57:41
+The first thing that comes to mind is, why… why are not we… why are not we handling it? Like, uh, instead of just using the imbalanced data and
+
+[Faculty (Olympus)] 12:57:54
+doing the predictions.
+
+[Faculty (Olympus)] 12:57:56
+Make sense? Is that what you're asking?
+
+[Dessie Ramnath .] 12:57:57
+Yeah, correct. Correct, correct, yeah.
+
+[Faculty (Olympus)] 12:58:02
+Now,
+
+[Faculty (Olympus)] 12:58:07
+Now, that is a very important question.
+
+[Faculty (Olympus)] 12:58:13
+Uh, does anybody want to take a crack at it before I actually tell you the answer?
+
+[Faculty (Olympus)] 12:58:24
+Okay, so one of the key things that…
+
+[Faculty (Olympus)] 12:58:28
+You should focus on is, why are we not handling explicitly in this case studies?
+
+[Faculty (Olympus)] 12:58:34
+Because we have already seen that 70%… we have acknowledged that 76 of the percent of the data is listed, people who are earning less than 50K.
+
+[Faculty (Olympus)] 12:58:46
+And most of the people, uh, after that are the people
+
+[Faculty (Olympus)] 12:58:49
+who are earning by 24% are 50K. Now, this is a moderate imbalance.
+
+[Faculty (Olympus)] 12:58:57
+So, the dataset reflects real society, uh, ones. So, when fewer people earn more than 50K and more people fall into lower-income group.
+
+[Faculty (Olympus)] 12:59:08
+If we artificially balance data, we are distorting the reality.
+
+[Faculty (Olympus)] 12:59:13
+Because if you try to balance this type of data,
+
+[Faculty (Olympus)] 12:59:18
+you're not doing it
+
+[Faculty (Olympus)] 12:59:23
+You're distorting something that doesn't exist, because there is always a riff
+
+[Faculty (Olympus)] 12:59:28
+between the people who are earning more and people who are earning less.
+
+[Faculty (Olympus)] 12:59:34
+Now, it depends on your case study. Our focus is, uh, to guide, uh, based on what we have learned,
+
+[Faculty (Olympus)] 12:59:43
+to this, uh, uh…
+
+[Faculty (Olympus)] 12:59:47
+W Health case study, uh, from this WHL case study to, uh…
+
+[Faculty (Olympus)] 12:59:55
+Uh, what is it, uh…
+
+[Faculty (Olympus)] 12:59:59
+NGO, yeah, data NGO. We're trying to focus and understand and give, uh…
+
+[Faculty (Olympus)] 13:00:10
+Pointers, so that this rift can be decreased. That is why we can't…
+
+[Faculty (Olympus)] 13:00:16
+handle the imbalanced.
+
+[Faculty (Olympus)] 13:00:17
+Although, our evaluation metric handles imbalance,
+
+[Dessie Ramnath .] 13:00:18
+Okay.
+
+[Faculty (Olympus)] 13:00:24
+While we do not rely on accuracy, we rely on recall, precision, F1 score, F1 score penalizes poor minority class performance.
+
+[Faculty (Olympus)] 13:00:35
+Uh, soap?
+
+[Faculty (Olympus)] 13:00:37
+The model does handle imbalance, but we don't increase the data points or decrease the number of data points.
+
+[Dessie Ramnath .] 13:00:44
+Okay.
+
+[Faculty (Olympus)] 13:00:44
+That is not how we go. The minority class is still large enough,
+
+[Dessie Ramnath .] 13:00:47
+Okay.
+
+[Faculty (Olympus)] 13:00:49
+And has, like, thousands of observations.
+
+[Faculty (Olympus)] 13:00:53
+So, the model has enough examples to learn the pattern.
+
+[Faculty (Olympus)] 13:00:56
+Now, when you're analyzing such a case study,
+
+[Faculty (Olympus)] 13:01:00
+You're not trying to decrease the gaps, but you are trying to predict the pattern and reduce and give out policies which can reduce it.
+
+[Faculty (Olympus)] 13:01:11
+So, you won't…
+
+[Faculty (Olympus)] 13:01:16
+If, uh, there was a case study,
+
+[Faculty (Olympus)] 13:01:20
+let's say salary of employees.
+
+[Faculty (Olympus)] 13:01:24
+And most of them, uh, those employees…
+
+[Faculty (Olympus)] 13:01:28
+Uh, meal…
+
+[Faculty (Olympus)] 13:01:30
+And only, like, 10% of female, then you should handle those imbalances, but it depends on
+
+[Faculty (Olympus)] 13:01:37
+What kind of problem you're dealing with, and that is why… but the imbalance still gets handled, but it is through the evaluation metrics which you rely on.
+
+[Faculty (Olympus)] 13:01:49
+So that is an important thing that we should be focusing on.
+
+[Faculty (Olympus)] 13:01:55
+Make sense?
+
+[Dessie Ramnath .] 13:01:55
+Okay, got it. Yeah, it makes sense.
+
+[Dessie Ramnath .] 13:01:58
+So you do want to mess around with the dataset that's been given. That's our reality.
+
+[Dessie Ramnath .] 13:02:03
+And if… okay.
+
+[Faculty (Olympus)] 13:02:03
+Yeah, 100%. For our use case. But we are still handling the imbalance through the evaluation metrics, uh, because we are not relying upon accuracy as our predictor.
+
+[Dessie Ramnath .] 13:02:06
+Yeah.
+
+[Dessie Ramnath .] 13:02:10
+Yeah, sure. Okay.
+
+[Faculty (Olympus)] 13:02:16
+we would be relying on recall precision, F1 score, which handles all this imbalance. And, uh…
+
+[Dessie Ramnath .] 13:02:22
+Okay.
+
+[Faculty (Olympus)] 13:02:24
+Why the imbalance comes into the picture? Because model needs to understand it.
+
+[Dessie Ramnath .] 13:02:30
+Okay.
+
+[Faculty (Olympus)] 13:02:31
+If model can understand it without handling imbalance, all the better. You… because…
+
+[Faculty (Olympus)] 13:02:39
+there's always an imbalance, like, it could be the people…
+
+[Faculty (Olympus)] 13:02:44
+Let's say you are gone to, uh, another example I give you just one last example. We choose any university. Most of the students go into that universities, I would say,
+
+[Faculty (Olympus)] 13:02:57
+the majority population, or at least 60% of the population, would be around local to that state.
+
+[Faculty (Olympus)] 13:03:05
+Yeah, but it's New York, California, Florida, 60%.
+
+[Faculty (Olympus)] 13:03:10
+And the other 40% would be people from different states. It could be, uh, if… I'm not talking about Ivy Leagues, but Journal league, uh, most colleges.
+
+[Faculty (Olympus)] 13:03:20
+have that.
+
+[Faculty (Olympus)] 13:03:21
+So, there is always an imbalance. It could also be any type. The people who are eating a certain kind of food, or
+
+[Faculty (Olympus)] 13:03:31
+Taking medicine, let's say, insulin,
+
+[Faculty (Olympus)] 13:03:34
+those could be people who are… sorry?
+
+[Dessie Ramnath .] 13:03:37
+I'm just thinking, I'm just acknowledging, yes.
+
+[Faculty (Olympus)] 13:03:40
+Oh, yeah. So, basically, I was trying a… you need imbalances,
+
+[Faculty (Olympus)] 13:03:45
+we try only handle imbalances if the model is not able to predict. And you can do it later, too. If you see your metrics are not getting good results, then you handle those imbalances.
+
+[Faculty (Olympus)] 13:03:57
+So, that's how I would proceed.
+
+[Faculty (Olympus)] 13:04:02
+Uh, that was a great question.
+
+[Dessie Ramnath .] 13:04:02
+Thank you, thank you
+
+[Faculty (Olympus)] 13:04:05
+Uh, now, moving on…
+
+[Faculty (Olympus)] 13:04:07
+We were trying to do the min-max scaling, actually. Uh… where did we do? The min-max scaling? Oh, here.
+
+[Faculty (Olympus)] 13:04:16
+We're actually doing the min-max scaling, but there is a critical issue here that I would like to point out, that…
+
+[Faculty (Olympus)] 13:04:23
+We didn't split the dataset yet into train and test, and scaling is performed before, train, and test flight.
+
+[Faculty (Olympus)] 13:04:31
+Which doesn't happen here.
+
+[Faculty (Olympus)] 13:04:33
+And is a major issue.
+
+[Faculty (Olympus)] 13:04:38
+So, please remember, everyone, that this is a big issue that…
+
+[Faculty (Olympus)] 13:04:43
+Scaling has been done before train, test, split.
+
+[Faculty (Olympus)] 13:04:47
+But…
+
+[Faculty (Olympus)] 13:04:50
+Uh, we'll be moving on, and we'll be encoding our categorical variables by using gettummies and doing the train-test split, and
+
+[Faculty (Olympus)] 13:04:58
+Verifying the split integrity.
+
+[Faculty (Olympus)] 13:05:00
+So…
+
+[Faculty (Olympus)] 13:05:05
+Once we have done all this, uh, the… we have 75% for training.
+
+[Faculty (Olympus)] 13:05:11
+And around 76% of the people
+
+[Faculty (Olympus)] 13:05:15
+in the testing for unprivileged, and we convert to NumPy arrays.
+
+[Faculty (Olympus)] 13:05:21
+Now, we'll actually do the model building and evaluation.
+
+[Faculty (Olympus)] 13:05:26
+Any questions so far?
+
+[Faculty (Olympus)] 13:05:32
+Now, in this, what we basically do is we took, uh…
+
+[Faculty (Olympus)] 13:05:39
+Uh, we basically do…
+
+[Faculty (Olympus)] 13:05:43
+a classification metric, and we, uh, see…
+
+[Faculty (Olympus)] 13:05:49
+We start with a linear, uh, function, uh, for our colonel.
+
+[Faculty (Olympus)] 13:05:55
+And see how it performs.
+
+[Faculty (Olympus)] 13:05:57
+For both training and testing.
+
+[Faculty (Olympus)] 13:06:01
+Uh… okay.
+
+[Faculty (Olympus)] 13:06:02
+So, if you see, both for training and testing,
+
+[Faculty (Olympus)] 13:06:08
+It doesn't perform very well, in my understanding.
+
+[Faculty (Olympus)] 13:06:12
+So…
+
+[Faculty (Olympus)] 13:06:17
+With the linear kernel, the test performance, I would say the train and the train and test F1 score of the model is around 89, and we'll try to improve it further.
+
+[Faculty (Olympus)] 13:06:27
+So, we'll move to a polynomial-based kernel.
+
+[Faculty (Olympus)] 13:06:33
+Uh, here we move to our polynomial with degree 2.
+
+[Faculty (Olympus)] 13:06:38
+And check out how the model would perform.
+
+[Faculty (Olympus)] 13:06:41
+Now, on this…
+
+[Faculty (Olympus)] 13:06:43
+You see our evaluation, and then we actually do the test score and
+
+[Faculty (Olympus)] 13:06:49
+I think both are train and test performance has improved by looking at these metrics, but it can further be improved.
+
+[Faculty (Olympus)] 13:06:57
+So, I'm gonna do a degree of tree using the same kernel trick.
+
+[Faculty (Olympus)] 13:07:02
+I would, uh, move to degree 3.
+
+[Faculty (Olympus)] 13:07:06
+No, once I moved to Degree Chi and actually start seeing the results,
+
+[Faculty (Olympus)] 13:07:13
+The performance has improved, to be honest. If you see, this is the performance metric, and this is improved, actually.
+
+[Faculty (Olympus)] 13:07:22
+So, which is a great thing.
+
+[Faculty (Olympus)] 13:07:24
+Now, we'll actually use a different kernel, which is radial basis function kernel.
+
+[Faculty (Olympus)] 13:07:31
+I basically see, again, the…
+
+[Faculty (Olympus)] 13:07:34
+Uh, metrics?
+
+[Faculty (Olympus)] 13:07:37
+For training and testing. Once this is done…
+
+[Faculty (Olympus)] 13:07:41
+Uh, so if you see this radial bug, uh, RBF…
+
+[Faculty (Olympus)] 13:07:44
+metrics?
+
+[Faculty (Olympus)] 13:07:48
+What we see, there is not much improvement, so it does not outperform polynomial kernels here.
+
+[Faculty (Olympus)] 13:07:54
+So, maybe we'll include another one that is karma.
+
+[Faculty (Olympus)] 13:08:00
+This karma was introduced to us in the theory.
+
+[Faculty (Olympus)] 13:08:04
+Uh, where is Gamma? Uh, here it is. This is the gamma.
+
+[Faculty (Olympus)] 13:08:09
+So this comma is introduced, uh, we'll start with point, uh, around 1.6.
+
+[Faculty (Olympus)] 13:08:14
+And see how it performs.
+
+[Faculty (Olympus)] 13:08:18
+So, even with gamma, we see noisible breakthrough improvement over a degree 2 polynomial, to be honest.
+
+[Faculty (Olympus)] 13:08:27
+And this is what they have mentioned here.
+
+[Faculty (Olympus)] 13:08:29
+So…
+
+[Faculty (Olympus)] 13:08:33
+Now, we'll increase the gamma value.
+
+[Faculty (Olympus)] 13:08:41
+It's 2.3.
+
+[Faculty (Olympus)] 13:08:43
+Now, once we have increased it to 0.3,
+
+[Faculty (Olympus)] 13:08:48
+we see that the training and test performance, even though it's not as good as before, it has improved a bit.
+
+[Faculty (Olympus)] 13:08:55
+is very less comparatively so. What we'll try to do, we'll do a polynomial with degree 3 and gamma point 3.
+
+[Faculty (Olympus)] 13:09:10
+Uh, this is degree 3.3, right? Oh, yeah.
+
+[Faculty (Olympus)] 13:09:13
+And this, uh… when we are checking the gamma value with degree 3 and 0.3, what we see, the performance on the training test does improve. Basically, training
+
+[Faculty (Olympus)] 13:09:23
+If fund increases significantly.
+
+[Faculty (Olympus)] 13:09:25
+So, the model fits the training better.
+
+[Faculty (Olympus)] 13:09:29
+But it also indicates beginning of overfitting and complexity, helping training more than generalization.
+
+[Faculty (Olympus)] 13:09:38
+So, we need to tune it
+
+[Faculty (Olympus)] 13:09:39
+Now, we include the last one, that is C.
+
+[Faculty (Olympus)] 13:09:43
+Which is also something we saw here. This is the C, misclassification of error of the model.
+
+[Faculty (Olympus)] 13:09:49
+So, this C…
+
+[Faculty (Olympus)] 13:09:52
+is there?
+
+[Faculty (Olympus)] 13:10:02
+Uh, once again, sorry, oh my god.
+
+[Faculty (Olympus)] 13:10:13
+Okay, so we were at the point C.1, and uh… once we do it with degree 3 and gamma point 3, what we see
+
+[Faculty (Olympus)] 13:10:23
+That… there is no improvement between the accuracy
+
+[Faculty (Olympus)] 13:10:31
+Further training and testing.
+
+[Faculty (Olympus)] 13:10:33
+Regularization, reducer training performance.
+
+[Faculty (Olympus)] 13:10:37
+Now, what we are gonna do is…
+
+[Faculty (Olympus)] 13:10:41
+Basically,
+
+[Faculty (Olympus)] 13:10:44
+Increase the value of C.
+
+[Faculty (Olympus)] 13:10:48
+Now, once we have increased the value of C,
+
+[Faculty (Olympus)] 13:10:53
+2.5…
+
+[Faculty (Olympus)] 13:10:55
+We again test training and the testing.
+
+[Faculty (Olympus)] 13:10:57
+And we see no improvement again.
+
+[Faculty (Olympus)] 13:11:08
+This is further testing, another is for training.
+
+[Faculty (Olympus)] 13:11:11
+Now, we basically move towards the final model,
+
+[Faculty (Olympus)] 13:11:16
+that we have…
+
+[Faculty (Olympus)] 13:11:19
+And…
+
+[Faculty (Olympus)] 13:11:23
+With this…
+
+[Faculty (Olympus)] 13:11:26
+we get a training and the testing performance comparison.
+
+[Faculty (Olympus)] 13:11:32
+This is for each of these, uh, with different degrees that we saw together right now.
+
+[Faculty (Olympus)] 13:11:38
+with the linear polynomial, and you can actually compare how the, uh…
+
+[Faculty (Olympus)] 13:11:43
+Each model has performed.
+
+[Faculty (Olympus)] 13:11:46
+And which gave you the best results.
+
+[Faculty (Olympus)] 13:11:50
+for both the training and testing.
+
+[Faculty (Olympus)] 13:11:55
+So once this is done, we basically build our conclusions like we have been able to
+
+[Faculty (Olympus)] 13:12:02
+to build predictive models that can help the…
+
+[Faculty (Olympus)] 13:12:06
+Citizens have less than K salary with an F1 score of 0.9.
+
+[Faculty (Olympus)] 13:12:11
+Because F1 balances identification,
+
+[Faculty (Olympus)] 13:12:15
+and reduce misallocation of benefits.
+
+[Faculty (Olympus)] 13:12:18
+Then we also would be able to do robustness, because SVMs have a generalized performance under training and testing.
+
+[Faculty (Olympus)] 13:12:27
+And we also see…
+
+[Faculty (Olympus)] 13:12:30
+that education-focused policies, the government should promote education among citizens and working hours, work hours is one of the most significant predictors of the salary.
+
+[Faculty (Olympus)] 13:12:45
+which is supported by our bivariate analysis on Fairplay, and private sector?
+
+[Faculty (Olympus)] 13:12:51
+Basically, it is directly grounded, it is salary versus work class, and salary versus
+
+[Faculty (Olympus)] 13:12:57
+Uh, 6 analysts.
+
+[Faculty (Olympus)] 13:13:00
+So, these are the key things.
+
+[Faculty (Olympus)] 13:13:04
+that we learn…
+
+[Faculty (Olympus)] 13:13:07
+from our case study.
+
+[Faculty (Olympus)] 13:13:10
+I have put the same thing in the chat, uh, for everyone to…
+
+[Faculty (Olympus)] 13:13:15
+Remember?
+
+[Faculty (Olympus)] 13:13:18
+Okay, I'm doing 5…
+
+[Faculty (Olympus)] 13:13:33
+So, this is how we are doing those recommendations. In case anybody has any confusion. So, these are the things.
+
+[Faculty (Olympus)] 13:13:42
+through, uh, I put it in the chat, how we got each of the recommendations.
+
+[Faculty (Olympus)] 13:13:48
+Makes sense, everyone?
+
+[Faculty (Olympus)] 13:13:59
+Any questions, any comments before we try to summarize what we have learned so far?
+
+[Faculty (Olympus)] 13:14:06
+And, uh,
+
+[Faculty (Olympus)] 13:14:08
+try to have…
+
+[Faculty (Olympus)] 13:14:12
+a small…
+
+[Faculty (Olympus)] 13:14:14
+summarization of our entire topic.
+
+[Faculty (Olympus)] 13:14:18
+Anything.
+
+[Dessie Ramnath .] 13:14:31
+Yo, I had a question on the… on the explanations, but I see you already put it in the chat.
+
+[Dessie Ramnath .] 13:14:37
+That'll lose us figuring out how you… how you manage to explain it using the…
+
+[Dessie Ramnath .] 13:14:42
+F1 score in terms of policy, etc., but you've put it in the chat, so it's okay.
+
+[Faculty (Olympus)] 13:14:47
+Yeah, it was… it would be a little difficult to go one by one and, like, uh, doing the analysis, uh, but it's much more easier if you can see it in the chat and compare it, like,
+
+[Faculty (Olympus)] 13:14:59
+how each of the recommendations that we are making here, how do… did we got to those recommendations and words? Like, we have already done the analysis,
+
+[Faculty (Olympus)] 13:15:08
+But how are we getting the data analysis and putting it? So, that is very important, and uh… that's why I tried to do that.
+
+[Faculty (Olympus)] 13:15:17
+Um, any other questions?
+
+[Faculty (Olympus)] 13:15:31
+Okay, so…
+
+[Faculty (Olympus)] 13:15:33
+based on this, let me try to summarize for you.
+
+[Faculty (Olympus)] 13:15:37
+Now, SVM is a supervised learning algorithm, which is used for both classification and regression.
+
+[Faculty (Olympus)] 13:15:45
+It works by finding a decision boundary that separates the class with the maximum margin.
+
+[Faculty (Olympus)] 13:15:52
+The data points closest to the boundary are support vectors,
+
+[Faculty (Olympus)] 13:15:57
+Support vectors influence the model?
+
+[Faculty (Olympus)] 13:16:00
+Other, uh, points do not affect the boundary as much.
+
+[Faculty (Olympus)] 13:16:05
+Support Victor Machine focuses on generalization,
+
+[Faculty (Olympus)] 13:16:09
+not just, uh, fitting the training data,
+
+[Faculty (Olympus)] 13:16:13
+It is effective in high-dimensional spaces and works well with the limited data.
+
+[Faculty (Olympus)] 13:16:21
+SVM is robust to overfitting.
+
+[Faculty (Olympus)] 13:16:25
+So, these are my…
+
+[Faculty (Olympus)] 13:16:27
+Can you think of this that everybody can…
+
+[Faculty (Olympus)] 13:16:31
+Always have…
+
+[Faculty (Olympus)] 13:16:37
+This is a slide note that I already prepared, so I shared it in the chat.
+
+[Faculty (Olympus)] 13:16:42
+Now…
+
+[Faculty (Olympus)] 13:16:45
+We talk about kernels.
+
+[Faculty (Olympus)] 13:16:47
+We have a linear kernel,
+
+[Faculty (Olympus)] 13:16:49
+This kernel is used when data is linearly separable.
+
+[Faculty (Olympus)] 13:16:53
+It is simple, fast, and interpretable.
+
+[Faculty (Olympus)] 13:16:55
+We have a polynomial cardinal, which captures feature interaction.
+
+[Faculty (Olympus)] 13:17:00
+Higher degree is more complex boundary, and radial biases, which handles non-linear data well.
+
+[Faculty (Olympus)] 13:17:11
+So, it is flexible and sensitive to outliers.
+
+[Faculty (Olympus)] 13:17:17
+And finally, we have important parameter, like C, which is regularization parameter.
+
+[Faculty (Olympus)] 13:17:25
+which controls trade-off between margin size and misclassification. Higher C means lower bias, high variance, and low C means high bias, low variance.
+
+[Faculty (Olympus)] 13:17:35
+It controls influence of individual points. High gamma meets complex bounty, low gamma meets motor boundary.
+
+[Faculty (Olympus)] 13:17:50
+No?
+
+[Faculty (Olympus)] 13:17:53
+With SVM?
+
+[Faculty (Olympus)] 13:17:56
+The main practical advantages are…
+
+[Faculty (Olympus)] 13:17:59
+It works on complex deletion boundaries. It is effective when the number of features is large.
+
+[Faculty (Olympus)] 13:18:05
+It has strong theoretical foundation and reliable performance, and good choice for medium-sized datasets.
+
+[Faculty (Olympus)] 13:18:12
+But, but, training can be slow on very large dataset, models are less interpretable than logistic regression, and choice of kernel parameter is critical.
+
+[Faculty (Olympus)] 13:18:21
+So, it is sensitive to scaling and noise.
+
+[Faculty (Olympus)] 13:18:31
+Now, with that…
+
+[Faculty (Olympus)] 13:18:33
+I have all, uh, this is all the things that I wanted to conclude.
+
+[Faculty (Olympus)] 13:18:41
+If anybody has any questions, comments,
+
+[Faculty (Olympus)] 13:18:45
+Uh, anything they want to add, please do let me know.
+
+[Faculty (Olympus)] 13:18:50
+Otherwise,
+
+[Faculty (Olympus)] 13:18:54
+I will be ending the session and giving some of your time back.
+
+[Faculty (Olympus)] 13:18:58
+And you guys can enjoy the rest of your Sunday. But if anybody has any questions, comments, anything,
+
+[Faculty (Olympus)] 13:19:05
+Or even, uh, have a thought, or they want to discuss a topic, I'm happy to do so.
+
+[Dessie Ramnath .] 13:19:14
+If you scroll up to the top, where you got the results of all the models, all the scoring, um…
+
+[Dessie Ramnath .] 13:19:20
+We didn't see that. So it's… is it based, uh… so the choice of the model
+
+[Dessie Ramnath .] 13:19:24
+is based on the results there. Is there… is the… I mean, if it's close… too close to 1,
+
+[Dessie Ramnath .] 13:19:29
+It's looking at, is it… is my thought process correct?
+
+[Dessie Ramnath .] 13:19:34
+If it's closer to 1, then it's… no, no, not to the bottom, to the bottom.
+
+[Dessie Ramnath .] 13:19:38
+It's right to the bottom, the model comparison.
+
+[Dessie Ramnath .] 13:19:40
+Yeah, yeah. Um…
+
+[Dessie Ramnath .] 13:19:43
+If it's closer to 1, then it's kind of, like, overfitting, for example.
+
+[Dessie Ramnath .] 13:19:48
+The SVM poly… which one was chosen? Is it the polynomial? Okay, that makes sense. So, the best model…
+
+[Dessie Ramnath .] 13:19:54
+that you chose was basically the highest score.
+
+[Dessie Ramnath .] 13:19:56
+Across the board. Across accuracy, recall, precision, and F1.
+
+[Dessie Ramnath .] 13:20:01
+Is that what you're saying?
+
+[Faculty (Olympus)] 13:20:01
+Yeah, but you have to do comparative analysis between training and testing, before… because…
+
+[Dessie Ramnath .] 13:20:05
+Okay.
+
+[Faculty (Olympus)] 13:20:07
+If a model is only performing well on training and not on testing, then it is overfitting.
+
+[Dessie Ramnath .] 13:20:11
+Yep.
+
+[Faculty (Olympus)] 13:20:12
+But if it is, uh, the other way around, then it is underfitting.
+
+[Faculty (Olympus)] 13:20:19
+generally doesn't happen, uh, unless you did something terribly wrong. Or, there should be constant… because there shouldn't be a very huge change in the range. Let's say our recoil for…
+
+[Dessie Ramnath .] 13:20:31
+Okay.
+
+[Faculty (Olympus)] 13:20:34
+the model shouldn't be changing, like, more than 10%. So you should be close enough so that you can see those changes and compare it.
+
+[Dessie Ramnath .] 13:20:43
+Okay.
+
+[Faculty (Olympus)] 13:20:43
+If that makes sense. And that is an important thing.
+
+[Dessie Ramnath .] 13:20:44
+Yeah.
+
+[Dessie Ramnath .] 13:20:48
+Okay. So, training and test should be close to each other.
+
+[Faculty (Olympus)] 13:20:52
+Yes, because if it's not close, you are overfitting. There could be other issues.
+
+[Faculty (Olympus)] 13:21:00
+Training is…
+
+[Faculty (Olympus)] 13:21:03
+In the ideal generalized model,
+
+[Faculty (Olympus)] 13:21:06
+Training is…
+
+[Faculty (Olympus)] 13:21:09
+When your model performs exceptionally well, and of course, on unseen data, it shouldn't do as well.
+
+[Faculty (Olympus)] 13:21:16
+It should maintain a certain level of, uh, I would say, performance.
+
+[Faculty (Olympus)] 13:21:21
+So, that is one thing you should be relying upon and focusing upon.
+
+[Faculty (Olympus)] 13:21:26
+I'm using that to choose which model you should be relying on.
+
+[Dessie Ramnath .] 13:21:32
+Thank you.
+
+[Dessie Ramnath .] 13:21:35
+That's all from me
+
+[Faculty (Olympus)] 13:21:38
+Any other questions, comments, suggestions, thoughts?
+
+[Faculty (Olympus)] 13:22:00
+Okay, so looks like everybody is good for right now.
+
+[Faculty (Olympus)] 13:22:05
+So, I'm gonna be ending this session, and hope you guys have a lovely rest of your day.
+
+[Faculty (Olympus)] 13:22:11
+Thank you so much, guys, for joining in so early, and…
+
+[Faculty (Olympus)] 13:22:17
+Have a good rest of your weekend!
+
+[Faculty (Olympus)] 13:22:19
+And happy new year to everyone!
+
+[Faculty (Olympus)] 13:22:23
+I'm so sorry, I thought about that.
+
+[Faculty (Olympus)] 13:22:50
+Okay, so I'm ending the session now. Thank you, everyone.
+
+[Faculty (Olympus)] 13:22:54
+Just a quick word before you guys leave. If you want to copy any of the comments that I shared in the chat, you can do it right now, because once I end the chat,
+
+[Faculty (Olympus)] 13:23:04
+it will be gone, so that is an, uh…
+
+[Faculty (Olympus)] 13:23:08
+you won't be able to retrieve that.
+
+[Olumuyiwa Adesina Theophilus .] 13:23:33
+Okay, email
+
+[Faculty (Olympus)] 13:23:37
+Perfect. Let me know once you guys are done, and uh… I can close the session after that.
+
+[Faculty (Olympus)] 13:23:43
+And in the meanwhile, if anybody has still any questions, please do let me know. I'm happy to answer it.
+
