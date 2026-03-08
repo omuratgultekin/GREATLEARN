@@ -1,64 +1,78 @@
 # Veri Bilimi ve Makine Öğrenmesi Eğitim Rehberi: Otel İptal Tahmini
 
-Bu doküman, "INN Hotels Group" projesinde uyguladığımız teknikleri, modelleri ve stratejileri anlamanıza yardımcı olmak için hazırlanmış bir eğitim rehberidir.
+Bu doküman, "INN Hotels Group" projesinde uyguladığımız teknikleri, modelleri ve stratejileri derinlemesine anlamanıza yardımcı olmak için hazırlanmış kapsamlı bir eğitim rehberidir.
 
 ---
 
 ## 1. Veriyi Anlamak (EDA - Exploratory Data Analysis)
-Veri biliminin %80'i veriyi anlamaktır. Biz bu projede üç seviyeli bir analiz yaptık:
+Veri biliminde başarının %80'i veriyi doğru analiz etmekten geçer. Bu projede üç farklı seviyede analiz uyguladık:
 
-*   **Univariate (Tek Değişkenli):** Sadece bir sütuna odaklanır. (Örn: Ortalama fiyatlar ne kadar? Rezervasyonlar hangi aylarda yoğunlaşıyor?)
-*   **Bivariate (İki Değişkenli):** İki sütun arasındaki ilişkiyi inceler. (Örn: Fiyat arttıkça iptal oranı artıyor mu? - *Korelasyon*)
-*   **Multivariate (Çok Değişkenli):** Üç veya daha fazla değişkenin etkisini ölçer. (Örn: Pazar segmenti, ay ve fiyatın iptallere ortak etkisi.)
+### 📊 Univariate (Tek Değişkenli) Analiz
+Sadece tek bir sütunun (değişkenin) davranışına odaklanırız.
+*   **Örnek:** Rezervasyonların hangi aylarda yoğunlaştığını inceledik ve **Ekim** ayının en yoğun ay olduğunu gördük.
+*   **Teknik Not:** Bu analiz, verideki çarpıklıkları (skewness) ve uç değerleri (outliers) ilk aşamada görmemizi sağlar.
 
----
+### 📈 Bivariate (İki Değişkenli) Analiz
+İki değişken arasındaki ilişkiyi veya korelasyonu inceleriz.
+*   **Örnek:** Rezervasyonun yapıldığı tarih ile varış tarihi arasındaki sürenin (**Lead Time**) iptal durumu üzerindeki etkisine baktık.
+*   **Teknik Not:** Bu, hangi özelliklerin (features) hedef değişkenimiz üzerinde daha etkili olduğunu anlamamıza yardımcı olur.
 
-## 2. Veri Ön İşleme (Preprocessing) - "Veriyi Pişirmek"
-Algoritmalar ham veriyi (yazıları, farklı ölçekteki sayıları) doğrudan anlayamazlar.
-
-*   **Encoding (Kodlama):** Bilgisayarlar sayılarla konuşur. "Canceled" kelimesini `1`'e dönüştürerek modele neyi tahmin etmesi gerektiğini öğrettik.
-*   **Scaling (Ölçeklendirme):** Bazı veriler çok büyük (Fiyat: 200€), bazıları çok küçüktür (Çocuk sayısı: 1). Ölçeklendirme (StandardScaler) yapmazsak, model fiyatı daha "önemli" sanırdı. Hepsini aynı teraziye koyduk.
-*   **Feature Selection:** Tahmin gücü olmayan (Örn: Rezervasyon ID'si) sütunları modele kafa karıştırmasın diye attık.
-
----
-
-## 3. Modelleri Tanıyalım
-
-### A. K-Nearest Neighbors (KNN - En Yakın Komşu)
-*   **Mantığı:** "Bana arkadaşını söyle, sana kim olduğunu söyleyeyim." Yeni bir rezervasyon geldiğinde, ona en çok benzeyen (en yakın) eski rezervasyonlara bakar. Onlar iptal edilmişse, bunu da iptal sayar.
-*   **Zayıf Yönü:** Veri setimiz çok büyükse mesafe hesaplamak yavaşlayabilir.
-
-### B. Naive Bayes
-*   **Mantığı:** Tamamen olasılık odaklıdır. "Bugüne kadar online gelenlerin %30'u iptal ettiyse, bu yeni online gelende de %30 risk vardır" gibi bir mantık kurar.
-*   **Güçlü Yönü:** Işık hızında çalışır.
-
-### C. Support Vector Machine (SVM)
-*   **Mantığı:** Verileri bir çizgiyle (veya düzlemle) ikiye bölmeye çalışır. İptal edenler ve etmeyenler arasına en geniş "güvenlik şeridini" (margin) çekmeye çalışır.
-*   **Neden Yavaş?** Matematiksel olarak çok karmaşık bir denge kurmaya çalıştığı için büyük verilerde ağırlaşır.
+### 🕸️ Multivariate (Çok Değişkenli) Analiz
+Üç veya daha fazla değişkenin birbiriyle etkileşimini inceleriz.
+*   **Örnek:** Pazar segmenti, ay ve oda fiyatının iptaller üzerindeki ortak etkisini analiz ettik.
 
 ---
 
-## 4. Optimizasyon: Neden Örneklem (Sampling) Kullandık?
-SVM yavaşladığında iki strateji uyguladık:
+## 2. Veri Ön İşleme (Preprocessing): "Veriyi Modellemeye Hazırlamak"
+Algoritmalar ham veriyi (kelimeler, farklı ölçekteki sayılar) doğrudan işleyemezler.
 
-1.  **RandomizedSearchCV:** Tüm parametre kombinasyonlarını tek tek denemek yerine (Grid Search), rastgele ama akıllı seçimler yaparak en iyi sonucu daha hızlı bulduk.
-2.  **Sampling (Örneklem %10):** 36.000 satırla deneme yapmak yerine, verinin karakterini yansıtan 3.600 satırla en iyi ayarları (tuning) bulduk. Ayarları bulunca, son modelimizi tüm veriyle eğittik. Bu, zaman kazanmanın profesyonel yoludur.
+### 🔠 Kodlama (Encoding)
+Bilgisayarların anlayabileceği tek dil sayılardır.
+*   **Label Encoding:** 'Canceled' kelimesini `1`, 'Not Canceled' kelimesini `0` yaptık.
+*   **One-Hot Encoding:** 'Online', 'Offline' gibi kategorileri ayrı ayrı sütunlara (dummy variables) böldük. Bu, modelin "Online > Offline" gibi yanlış bir matematiksel sıralama yapmasını önler.
 
----
-
-## 5. Başarıyı Nasıl Ölçeriz? (Metrikler)
-Sadece "Doğruluk" (Accuracy) yetmez!
-
-*   **Recall:** Gerçekten iptal edeceklerin kaçını yakaladık? (Otel için en önemli soru).
-*   **Precision:** "İptal edecek" dediğimizde ne kadar haklıydık? (Gereksiz overbooking yapmamak için).
-*   **F1-Score:** Bu ikisinin ortalamasıdır. Bizim ana hedefimiz budur.
+### ⚖️ Ölçeklendirme (Feature Scaling)
+*   **Sorun:** KNN ve SVM gibi modeller "mesafe" hesaplar. Eğer fiyat 200€, çocuk sayısı 1 ise; model fiyatı 200 kat daha önemli sanabilir.
+*   **Çözüm:** `StandardScaler` kullanarak tüm değerleri ortalaması 0, varyansı 1 olacak şekilde aynı "teraziye" koyduk.
 
 ---
 
-## 6. Sonuç: Neden SVM Seçtik?
-Cevap: **Genelleme (Generalization)**.
-KNN çok iyi skorlar verdi ama eğitim verisini "ezberleme" (Overfitting) eğilimindeydi. SVM ise hem eğitimde hem testte dengeli sonuçlar vererek gerçek dünyadaki yeni rezervasyonları daha iyi tahmin edeceğini kanıtladı.
+## 3. Modelleri Tanıyalım: Teknik Detaylar
+
+### 🗺️ K-Nearest Neighbors (KNN)
+*   **Mantık:** "Bana arkadaşını söyle, sana kim olduğunu söyleyeyim." Yeni bir rezervasyonu, ona en çok benzeyen eski kayıtlara bakarak sınıflandırır.
+*   **İpucu:** Basittir ama veri seti çok büyüdüğünde her nokta için mesafe hesapladığı için yavaşlayabilir.
+
+### 🎲 Naive Bayes
+*   **Mantık:** Bayes Teoremi'ne dayanır; özelliklerin birbirinden tamamen bağımsız olduğunu varsayarak olasılık hesabı yapar.
+*   **İpucu:** İnanılmaz hızlıdır ve az veriyle bile iyi baseline sonuçlar verebilir; ancak "bağımsızlık" varsayımı gerçek hayatta nadiren tam olarak karşılanır.
+
+### 🛡️ Support Vector Machine (SVM)
+*   **Mantık:** Verileri birbirinden ayıran en geniş "güvenlik şeridini" (margin) bulmaya çalışır.
+*   **Kritik Bilgi:** SVM karmaşıklığı, veri sayısı arttıkça kübik olarak artar ($O(n^3)$). 36.000 satırda bu yüzden çok yavaşladı (46 dakikalık bekleme süresinin sebebi buydu).
 
 ---
 
-> **Eğitim Notu:** Bir veri bilimcisi sadece kod yazmaz; elindeki aracın (SVM, KNN) neden yavaşladığını bilir ve ona göre "Sampling" gibi stratejiler geliştirir. Bu proje ile bu profesyonel bakış açısını kazandınız!
+## 4. Profesyonel Strateji: Örneklem (Sampling) ve Eğitim
+Gerçek dünyada büyük veriyle çalışırken "beklemek" bir seçenek değildir, "optimize etmek" gerekir.
+
+### 🧪 Stratified Sampling (Tabakalı Örneklem)
+Hyperparameter tuning (en iyi ayarları bulma) aşamasında verinin **%10'unu (3.600 satır)** kullandık.
+*   **Neden Stratified?** Çünkü bu yöntem, örneklemdeki 'İptal' oranının ana veridekiyle birebir aynı kalmasını sağlar. Yani çorbanın tadına bakarken her yerini karıştırmış oluruz.
+
+### ⚡ Hızlı Arama, Güçlü Eğitim
+1.  **Arama:** En iyi parametreleri (C, kernel vb.) %10'luk küçük veride `RandomizedSearchCV` ile hızlıca bulduk.
+2.  **Eğitim:** En iyi parametreleri karar verdikten sonra, final modelimizi **tüm veriyle (%100)** eğittik. Böylece hem zaman kazandık hem de model performansından ödün vermedik.
+
+---
+
+## 5. Başarı Metrikleri: Sadece "Doğruluk" Yetmez!
+Eğer veride iptal oranı dengesizse, her şeye "iptal değil" diyen bir model bile yüksek doğruluk (Accuracy) verebilir. Bu yüzden şunlara baktık:
+
+*   **Recall (Duyarlılık):** Gerçekten iptal edeceklerin yüzde kaçını yakaladık? (Otel için en önemli soru).
+*   **Precision (Keskinlik):** "İptal edecek" dediğimizde ne kadar haklıydık? (Gereksiz aşırı oda satışını önlemek için).
+*   **F1-Score:** Bu ikisinin dengeli bir ortalamasıdır. Bizim ana başarı kriterimiz budur.
+
+---
+
+> **Eğitim Notu:** İyi bir veri bilimcisi sadece kod yazan değil; SVM gibi bir model yavaşladığında "Sampling" gibi optimizasyon tekniklerini kullanarak işi bitirebilen kişidir. Bu proje ile bu profesyonel vizyonu kazandınız!
